@@ -1,0 +1,111 @@
+
+.flexNav {
+    display: inline-block;
+}
+
+.navFlex {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.header_img_right {
+    width: 40px;
+}
+
+
+
+
+
+
+
+.above_nav {
+    display: flex;
+}
+
+
+
+.align_right {
+    align-self: flex-end;
+    margin-left: 1%;
+}
+
+.main_title {
+            align-self: center;
+    font-family: 'Droid serif', serif;
+    font-size: 57px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 44px;
+}
+
+body {
+    width: 95vw;
+}
+
+.content {
+    margin-left: 2vw;
+}
+
+p {
+    text-align: justify;
+}
+
+
+
+#filters_display {
+    display:flex;
+}
+
+
+
+.filters_display2 {
+    display: flex;
+    margin-left: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.img_background {
+    margin-top: 5vw;
+
+}
+
+.content_img {
+    display: flex;
+    flex-flow: row-reverse;
+}
+
+.fuckingfilters {
+    display: flex;
+}
+
+
+
+.first_line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text_top_left {
+    width: 60%;
+}
+
+
+
+.top_right_table {
+    margin-right: 10%;
+}

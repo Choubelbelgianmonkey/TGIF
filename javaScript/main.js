@@ -1,12 +1,6 @@
-var data; //empty var wich will be filled out by a json through the function start(url) below
+var data; 
 var memberList;
-
-$body = $("body");
-
-$(document).on({
-    ajaxStart: function() { $body.addClass("loading");    },
-     ajaxStop: function() { $body.removeClass("loading"); }    
-});
+    var body = document.querySelector("#loader"); 
 
 
 if (location.pathname == "/senate-data.html" || location.pathname == "/Senate%20Attendance%20statistics.html" || location.pathname == "/Senate%20Partyl%20Loyalty.html") {
@@ -15,7 +9,7 @@ if (location.pathname == "/senate-data.html" || location.pathname == "/Senate%20
     start("https://api.propublica.org/congress/v1/113/house/members.json");
 }
 
-//the abovefunction allow to dynamically set up the targeted json file in the function below
+//the abovefunction allow to dynamically set up the targeted json file in the function below. This might not work if bracket dont launch chrome properly
 // kindly note the function is called in the {}, therefore the function following the conditon is calling another function
 // the content of the targeted json file will be fetch below:
 
@@ -27,19 +21,23 @@ function start(url) { //here begin the function calling for the json
             headers: new Headers({ //adding header as per website, here the header will be the API key received earlier
                 "X-API-Key": 'bKtSKxaOvma8xSiQfmAzDDFoHg9R79x6LUVFeben'
             })
-        }).then(function (response) { //if 200: return json promises
+        })
+    .then(function (response) { 
+        body.classList.add("loading");//loader begin here
             if (response.ok)
                 return response.json();
-        }).then(function (json) { //using a function with the json:
+        }).then(function (json) { 
             // VERY IMPORTANT:
             // as main VAR is here, we can and we HAVE to call all the relevant function here (VAR dont cross {})
 
             memberList = json.results[0].members;
-            populateTable(memberList); //the function created before in order to populate the table! NB: I used the variable memberList this time as it contain all the member of the json
+        
+            
+            populateTable(memberList); 
 
-
-            checkParty() // to create checkboxes from this json
-            createDropDown() // to create the dropdown from this json
+            checkParty() 
+            createDropDown() 
+            body.classList.remove("loading"); // remove the ajax loader  
         })
         .catch(function (error) {
             console.log(error);
@@ -52,12 +50,12 @@ function populateTable(guys) {
     var tbody = document.getElementById("table")
 
     tbody.innerHTML = ""; // reset the content of the table for each loop for the function searchParty() & searchState()
-
-    for (i = 0; i < guys.length; i++) 
-    {
-
-        var row = table.insertRow(-1); //minus one in ordert o create row from top to bottom
-        row.setAttribute("class", ` ${guys[i].party}, ${guys[i].state}`); //to add a class for each row for filter below
+    
+    
+    guys.forEach(guy => {
+        var row = table.insertRow(-1); //minus one in order to create row from top to bottom
+        
+        row.setAttribute("class", ` ${guy.party}, ${guy.state}`); //to add a class for each row for filter below
 
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
@@ -68,29 +66,29 @@ function populateTable(guys) {
         var class_party = cell2.setAttribute("class", "classParty") // to add class for the column party for the fiters below
         var class_State = cell3.setAttribute("class", "classState") // to add class for the column state for the fiters below
 
-        anchor.setAttribute("href", guys[i].url);
-        anchor.textContent = guys[i].last_name + " " + guys[i].first_name + " " + (guys[i].middle_name || "");
+        anchor.setAttribute("href", guy.url);
+        anchor.textContent = guy.last_name + " " + guy.first_name + " " + (guy.middle_name || "");
 
         cell1.append(anchor);
-        cell2.append(guys[i].party);
-        cell3.append(guys[i].state);
-        cell4.append(guys[i].seniority);
-        cell5.append(guys[i].votes_with_party_pct);
-    } 
+        cell2.append(guy.party);
+        cell3.append(guy.state);
+        cell4.append(guy.seniority);
+        cell5.append(guy.votes_with_party_pct);
+                
+              }  )
 }
 
 //navbar begin here
 var navBar = document.querySelectorAll("div.navSelector > option");
 
 // step 2: creating checkboxes from party
-// path to requested value: data.results[0].members[i].party
 
 var partyList = []; // this is the list of the party w/o duplicate
 
 function checkParty() {
 
     //step 1 : create checkboxes
-    var my_checkboxes = document.getElementById("my_checkboxes") //this function start at the ID "my_checkboxes" in                                                                                     // the HTML page
+    var my_checkboxes = document.getElementById("my_checkboxes")                                                                                    
     for (var i = 0; i < memberList.length; i++) { // this loop 
         if (!partyList.includes(memberList[i].party)) { //  merge duplicate    
             partyList.push(memberList[i].party); // and create an array
@@ -125,17 +123,17 @@ function checkParty() {
     fullPartyName.forEach(party => { //function inside another function! funception!
         //party here is a variable wich is given to all element in the array
 
-        var checkBox = document.createElement("input") //this function
-        checkBox.type = "checkbox"; // create an input type checkbox
+        var checkBox = document.createElement("input") 
+        checkBox.type = "checkbox";
 
-        var label = document.createElement("label"); // and an label   
-        checkBox.value = party; // with the value of party
+        var label = document.createElement("label");   
+        checkBox.value = party;
 
-        checkBox.setAttribute("class", "myInput"); // and a class for the search filter afterward
+        checkBox.setAttribute("class", "myInput");
 
-        my_checkboxes.appendChild(checkBox); //then create inside the div 
-        my_checkboxes.appendChild(label); // of the html page
-        label.appendChild(document.createTextNode(party)); // the aforementioned variables
+        my_checkboxes.appendChild(checkBox); 
+        my_checkboxes.appendChild(label);
+        label.appendChild(document.createTextNode(party)); 
 
     })
 
@@ -152,12 +150,12 @@ var checkBoxes = document.getElementsByClassName("myInput"); //isolating checkbo
 
 //step 4: create state dropDown
 
-var stateList = []
+var stateList =  []
 
 function createDropDown() {
     //step 1 : create dropDown
-    var dropDownState = document.getElementById("drop_down_state"); //this function start at the ID "dropDownState" in  
-                                                                                    // the HTML page
+    var dropDownState = document.getElementById("drop_down_state");  
+                    
 
 
     for (var i = 0; i < memberList.length; i++) { // this loop 
@@ -166,21 +164,84 @@ function createDropDown() {
         }
     }
     
-
+    
+    var nameList = {
+    "AL": "Alabama",
+    "AK": "Alaska",
+    "AS": "American Samoa",
+    "AZ": "Arizona",
+    "AR": "Arkansas",
+    "CA": "California",
+    "CO": "Colorado",
+    "CT": "Connecticut",
+    "DE": "Delaware",
+    "DC": "District Of Columbia",
+    "FM": "Federated States Of Micronesia",
+    "FL": "Florida",
+    "GA": "Georgia",
+    "GU": "Guam",
+    "HI": "Hawaii",
+    "ID": "Idaho",
+    "IL": "Illinois",
+    "IN": "Indiana",
+    "IA": "Iowa",
+    "KS": "Kansas",
+    "KY": "Kentucky",
+    "LA": "Louisiana",
+    "ME": "Maine",
+    "MH": "Marshall Islands",
+    "MD": "Maryland",
+    "MA": "Massachusetts",
+    "MI": "Michigan",
+    "MN": "Minnesota",
+    "MS": "Mississippi",
+    "MO": "Missouri",
+    "MT": "Montana",
+    "NE": "Nebraska",
+    "NV": "Nevada",
+    "NH": "New Hampshire",
+    "NJ": "New Jersey",
+    "NM": "New Mexico",
+    "NY": "New York",
+    "NC": "North Carolina",
+    "ND": "North Dakota",
+    "MP": "Northern Mariana Islands",
+    "OH": "Ohio",
+    "OK": "Oklahoma",
+    "OR": "Oregon",
+    "PW": "Palau",
+    "PA": "Pennsylvania",
+    "PR": "Puerto Rico",
+    "RI": "Rhode Island",
+    "SC": "South Carolina",
+    "SD": "South Dakota",
+    "TN": "Tennessee",
+    "TX": "Texas",
+    "UT": "Utah",
+    "VT": "Vermont",
+    "VI": "Virgin Islands",
+    "VA": "Virginia",
+    "WA": "Washington",
+    "WV": "West Virginia",
+    "WI": "Wisconsin",
+    "WY": "Wyoming"
+}
 
 
     for (var j = 0; j < stateList.length; j++) {
-        var stateDrop = document.createElement("option"); //this loop create an option inside the <select> tag
+        var stateDrop = document.createElement("option"); 
 
-        var label = document.createElement("label"); // and an label   
-        stateDrop.value = stateList[j]; // with the value of state
+ 
+        stateDrop.value = stateList[j];
 
-        stateDrop.setAttribute("class", "myState"); // and an ID for the search filter afterward
+        stateDrop.setAttribute("class", "myState"); 
 
-        stateDrop.append(stateList[j]); // this one is NOT appendChild because there is no child tag for the text of a dropdown menu 
-        dropDownState.appendChild(stateDrop); //then create inside the div 
-        dropDownState.appendChild(label); // of the html page
-        label.appendChild(document.createTextNode(stateList[j])); // the aforementioned variables
+        stateDrop.append(nameList[stateList[j]]); // this one is NOT appendChild because there is no child tag for the text of a dropdown menu 
+        
+        //HERE pay attention, the [stateList[j] is actually a matching string of letter in nameList EG: nameList[stateList[1]] means nameList.TN. Therefore its pushing the value matching the key nameList[stateList[1]]:Tenessee
+        
+        dropDownState.appendChild(stateDrop); 
+
     }
 }
 

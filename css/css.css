@@ -78,13 +78,34 @@ p {
     margin-right: 10%;
 }
 
+/*ajax loader start here*/
 
-/* Start by setting display:none to make this hidden.
-   Then we position it in relation to the viewport window
-   with position:fixed. Width, height, top and left speak
-   for themselves. Background we set to 80% white with
-   our animation centered, and no-repeating */
-.modal {
+#modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    height:     100%;
+    width:      100%;
+}
+
+#img_modal {
+        margin-left: 50%;
+    margin-top: 10%;
+}
+
+#loader.loading #modal {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+#loader.loading #modal {
+    display: block;
+}
+
+/*special loader for the last 4 pages*/
+
+#modal2 {
     display:    none;
     position:   fixed;
     z-index:    1000;
@@ -93,19 +114,36 @@ p {
     height:     100%;
     width:      100%;
     background: rgba( 255, 255, 255, .8 ) 
-                url('http://i.stack.imgur.com/FhHRx.gif') 
+                url('/images/ajax-loader.gif') 
                 50% 50% 
-                no-repeat;
-}
+        no-repeat;}
+
 
 /* When the body has the loading class, we turn
    the scrollbar off with overflow:hidden */
-body.loading .modal {
+
+
+
+
+#loader.loading #modal2 {
     overflow: hidden;   
 }
 
 /* Anytime the body has the loading class, our
    modal element will be visible */
-body.loading .modal {
+#loader.loading #modal2 {
     display: block;
+}
+
+/*ajax loader finish here*/
+
+
+/*message in case of not result with the filters*/
+
+
+.notification{
+    width: 70%;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
 }

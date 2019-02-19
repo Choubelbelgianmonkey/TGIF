@@ -1,7 +1,9 @@
-var data, //empty var wich will be filled out by a json through the function start(url) below
+var data, 
     memberList,
     statistic,
     json;
+
+var body = document.querySelector("#loader");
 
 
 if (location.pathname == "/senate-data.html" || location.pathname == "/Senate%20Attendance%20statistics.html" || location.pathname == "/Senate%20Partyl%20Loyalty.html") {
@@ -16,17 +18,18 @@ if (location.pathname == "/senate-data.html" || location.pathname == "/Senate%20
 
 
 
-function start(url) { //here begin the function calling for the json
+function start(url) { 
 
     fetch(url, { //url as set up on lines 3 to 7
             method: "GET",
-            headers: new Headers({ //adding header as per website, here the header will be the API key received earlier
+            headers: new Headers({ 
                 "X-API-Key": 'bKtSKxaOvma8xSiQfmAzDDFoHg9R79x6LUVFeben'
             })
-        }).then(function (response) { //if 200: return json promises
+        }).then(function (response) { 
+        body.classList.add("loading");// call the ajax loader
             if (response.ok)
                 return response.json();
-        }).then(function (json) { //using a function with the json:
+        }).then(function (json) { 
             // VERY IMPORTANT:
             // as main VAR is here, we can and we HAVE to call all the relevant function here (VAR dont cross {})
 
@@ -45,15 +48,15 @@ function start(url) { //here begin the function calling for the json
                 "10%whovoteleastoftenwiththeirpartyMissedVotes": getLeastLoyalMissedVotes(),
                 "10%whovoteleastoftenwiththeirpartyPercentMissedVotes": getLeastLoyalPercentMissedVotes(),
 
-                "10%whovotemostoftenwiththeirpartyName": getMostLoyalName(), // according to mentor, it is not wishable to create a string will all those value as once, better split them in one key each time
+                "10%whovotemostoftenwiththeirpartyName": getMostLoyalName(),
                 "10%whovotemostoftenwiththeirpartyMissedVotes": getMostLoyalMissedVotes(),
                 "10%whovotemostoftenwiththeirpartyPercentMissedVotes": getMostLoyalPercentMissedVotes(),
 
-                "10%whovoteleastoftenName": getLeastEngagedName(), // according to mentor, it is not wishable to create a string will all those value as once, better split them in one key each time
+                "10%whovoteleastoftenName": getLeastEngagedName(), 
                 "10%whovoteleastoftenMissedvotes": getLeastEngagedMissedVotes(),
                 "10%whovoteleastoftenName%Missedvotes": getLeastEngagedPercentMissedVotes(),
 
-                "10%whovotemostoftenName": getMostEngagedName(), // according to mentor, it is not wishable to create a string will all those value as once, better split them in one key each time
+                "10%whovotemostoftenName": getMostEngagedName(),
                 "10%whovotemostoftenMissedVotes": getMostEngagedMissedVotes(),
                 "10%whovotemostoften%Missedvotes": getMostEngagedPercentMissedVotes(),
 
@@ -73,19 +76,19 @@ function start(url) { //here begin the function calling for the json
                         "republicansVotingWithParty": getMemberLoyatly("R"),
                         "independentsVotingWithParty": getMemberLoyatly("I"),
 
-                        "10%whovoteleastoftenwiththeirpartyName": getLeastLoyalName(), // according to mentor, it is not wishable to create a string will all those value as once, better split them in one key each time
+                        "10%whovoteleastoftenwiththeirpartyName": getLeastLoyalName(),
                         "10%whovoteleastoftenwiththeirpartyMissedVotes": getLeastLoyalMissedVotes(),
                         "10%whovoteleastoftenwiththeirpartyPercentMissedVotes": getLeastLoyalPercentMissedVotes(),
 
-                        "10%whovotemostoftenwiththeirpartyName": getMostLoyalName(), // according to mentor, it is not wishable to create a string will all those value as once, better split them in one key each time
+                        "10%whovotemostoftenwiththeirpartyName": getMostLoyalName(), 
                         "10%whovotemostoftenwiththeirpartyMissedVotes": getMostLoyalMissedVotes(),
                         "10%whovotemostoftenwiththeirpartyPercentMissedVotes": getMostLoyalPercentMissedVotes(),
 
-                        "10%whovoteleastoftenName": getLeastEngagedName(), // according to mentor, it is not wishable to create a string will all those value as once, better split them in one key each time
+                        "10%whovoteleastoftenName": getLeastEngagedName(), 
                         "10%whovoteleastoftenMissedvotes": getLeastEngagedMissedVotes(),
                         "10%whovoteleastoftenName%Missedvotes": getLeastEngagedPercentMissedVotes(),
 
-                        "10%whovotemostoftenName": getMostEngagedName(), // according to mentor, it is not wishable to create a string will all those value as once, better split them in one key each time
+                        "10%whovotemostoftenName": getMostEngagedName(), 
                         "10%whovotemostoftenMissedVotes": getMostEngagedMissedVotes(),
                         "10%whovotemostoften%Missedvotes": getMostEngagedPercentMissedVotes(),
 
@@ -104,20 +107,22 @@ function start(url) { //here begin the function calling for the json
             if (document.getElementById("second_table")) { // very useful piece of code ! to remember !!!
                 populateSecondTableAttendance(statistic) //  prevent a function to be triggered in all pages
             }
-            if (document.getElementById("third_table")) { // very useful piece of code ! to remember !!!
-                populateThirdTableAttendance(statistic) //  prevent a function to be triggered in all pages
+            if (document.getElementById("third_table")) {
+                populateThirdTableAttendance(statistic)
             }
-            if (document.getElementById("second_table_loyalty")) { // very useful piece of code ! to remember !!!
-                populateSecondTableLoyalty(statistic) //  prevent a function to be triggered in all pages
+            if (document.getElementById("second_table_loyalty")) { 
+                populateSecondTableLoyalty(statistic) 
             }
-            if (document.getElementById("third_table_loyalty")) { // very useful piece of code ! to remember !!!
-                populateThirdTableLoyatly(statistic) //  prevent a function to be triggered in all pages
+            if (document.getElementById("third_table_loyalty")) { 
+                populateThirdTableLoyatly(statistic) 
             }
+        body.classList.remove("loading"); // remove the ajax loader 
 
 
         })
+    
         .catch(function (error) {
-            console.log(error); //very important! allow to display error message inside the console! automatically
+            console.log(error); //very important! allow to display error message inside the console automatically ! 
         })
 }
 
@@ -126,7 +131,7 @@ function start(url) { //here begin the function calling for the json
 
 function calculateMember(party) {
 
-    var listOfMember = [] //creating empty array wich will receive the members
+    var listOfMember = [] 
 
     for (i = 0; i < memberList.length; i++) { //looping throuhg list and dispatching each matching member to an array
 
@@ -134,54 +139,47 @@ function calculateMember(party) {
             listOfMember.push(memberList[i])
         }
     }
-    var numberOfMember = listOfMember.length // calculating the amount of member
-    //      console.log(numberOfMember) // used there for testing purposes
+    var numberOfMember = listOfMember.length 
+    
 
-    return numberOfMember; //push the result in the json file above
-    //tofixed change the number in a string but can limited the amount of decimals
+    return numberOfMember; 
+  
 }
 
 function getMemberLoyatly(party) {
 
-    var listOfMemberLoyalty = [] //creating empty array wich will receive the members loyalty
+    var listOfMemberLoyalty = [] 
 
-    for (i = 0; i < memberList.length; i++) { //looping throuhg list 
+    for (i = 0; i < memberList.length; i++) {  
         if (memberList[i].party === party) { //isolating the matchingmember and pushing the proper key inside an array
             listOfMemberLoyalty.push(memberList[i].votes_with_party_pct)
         }
     }
 
-    // console.log(listOfMemberLoyalty)  //added there for testing purposes, NB: its running automatically without calling the function
-
-
     var sumOfLoyatly = listOfMemberLoyalty.reduce((a, b) => a + b, 0)
-
+    // rename each member of the array a & b, where a & b are sums up, the original value is 0
 
     var diviseur = listOfMemberLoyalty.length === 0 ? 1 : listOfMemberLoyalty.length
-
     var averageOfLoyatly = sumOfLoyatly / diviseur
+// the two last var have has purpose to prevent the display of NaN, as you cannot divide by 0 (JS dont allow it)
 
-
-    //   console.log(averageOfLoyatly) //added there for testing purposes, NB: its running automatically without calling the function
-
-    return averageOfLoyatly.toFixed(2); //push the result in the json file above
-    //tofixed change the number in a string but can limited the amount of decimals
+    return averageOfLoyatly.toFixed(2); 
 }
 
 // least loyal name & missed votes & % missed votes
 
 function getLeastLoyalName() {
 
-    var lowestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var lowestTenPercent = [], 
+        listOfMember = []; 
 
 
-    for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
+    for (i = 0; i < memberList.length; i++) { 
         listOfMember.push(memberList[i])
     };
 
     listOfMember.sort(function (a, b) {
-        return a.votes_with_party_pct - b.votes_with_party_pct; //sorting list accordingly with votes matching their party
+        return a.votes_with_party_pct - b.votes_with_party_pct; 
     });
 
     for (j = 0; j < (listOfMember.length * 0.1); j++) {
@@ -200,16 +198,16 @@ function getLeastLoyalName() {
 
 function getLeastLoyalMissedVotes() {
 
-    var lowestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var lowestTenPercent = [], 
+        listOfMember = [] 
 
 
-    for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
+    for (i = 0; i < memberList.length; i++) { 
         listOfMember.push(memberList[i])
     };
 
     listOfMember.sort(function (a, b) {
-        return a.votes_with_party_pct - b.votes_with_party_pct; //sorting list accordingly with votes matching their party
+        return a.votes_with_party_pct - b.votes_with_party_pct; 
     });
 
     for (j = 0; j < (listOfMember.length * 0.1); j++) {
@@ -226,16 +224,16 @@ function getLeastLoyalMissedVotes() {
 function getLeastLoyalPercentMissedVotes() {
 
 
-    var lowestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var lowestTenPercent = [], 
+        listOfMember = [] 
 
 
-    for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
+    for (i = 0; i < memberList.length; i++) { 
         listOfMember.push(memberList[i])
     };
 
     listOfMember.sort(function (a, b) {
-        return a.votes_with_party_pct - b.votes_with_party_pct; //sorting list accordingly with votes matching their party
+        return a.votes_with_party_pct - b.votes_with_party_pct; 
     });
 
     for (j = 0; j < (listOfMember.length * 0.1); j++) {
@@ -250,16 +248,16 @@ function getLeastLoyalPercentMissedVotes() {
 
 function getMostLoyalName() {
 
-    var highestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var highestTenPercent = [], 
+        listOfMember = [] 
 
 
-    for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
+    for (i = 0; i < memberList.length; i++) { 
         listOfMember.push(memberList[i])
     };
 
     listOfMember.sort(function (a, b) {
-        return b.votes_with_party_pct - a.votes_with_party_pct; //sorting list accordingly with votes matching their party
+        return b.votes_with_party_pct - a.votes_with_party_pct; 
     });
 
     for (j = 0; j < (listOfMember.length * 0.1); j++) {
@@ -276,16 +274,16 @@ function getMostLoyalName() {
 
 function getMostLoyalMissedVotes() {
 
-    var highestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var highestTenPercent = [], 
+        listOfMember = [];
 
 
-    for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
+    for (i = 0; i < memberList.length; i++) {
         listOfMember.push(memberList[i])
     };
 
     listOfMember.sort(function (a, b) {
-        return b.votes_with_party_pct - a.votes_with_party_pct; //sorting list accordingly with votes matching their party
+        return b.votes_with_party_pct - a.votes_with_party_pct; 
     });
 
     for (j = 0; j < (listOfMember.length * 0.1); j++) {
@@ -304,8 +302,8 @@ function getMostLoyalMissedVotes() {
 
 function getMostLoyalPercentMissedVotes() {
 
-    var highestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var highestTenPercent = [], 
+        listOfMember = [] 
 
 
     for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
@@ -328,16 +326,16 @@ function getMostLoyalPercentMissedVotes() {
 
 function getLeastEngagedName() {
 
-    var lowestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var lowestTenPercent = [], 
+        listOfMember = [];
 
 
-    for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
+    for (i = 0; i < memberList.length; i++) { 
         listOfMember.push(memberList[i])
     };
 
     listOfMember.sort(function (a, b) {
-        return b.missed_votes_pct - a.missed_votes_pct; //sorting list accordingly with votes matching their party
+        return b.missed_votes_pct - a.missed_votes_pct; 
     });
 
     for (j = 0; j < (listOfMember.length * 0.1); j++) {
@@ -355,17 +353,17 @@ function getLeastEngagedName() {
 
 function getLeastEngagedMissedVotes() {
 
-    var lowestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var lowestTenPercent = [], 
+        listOfMember = [];
 
-    for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
+    for (i = 0; i < memberList.length; i++) {
         listOfMember.push(memberList[i])
     };
 
 
 
     listOfMember.sort(function (a, b) {
-        return b.missed_votes_pct - a.missed_votes_pct; //sorting list accordingly with votes matching their party
+        return b.missed_votes_pct - a.missed_votes_pct; 
     });
 
 
@@ -386,8 +384,8 @@ function getLeastEngagedMissedVotes() {
 function getLeastEngagedPercentMissedVotes() {
 
 
-    var lowestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var lowestTenPercent = [],  
+        listOfMember = []  
 
 
     for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
@@ -411,8 +409,8 @@ function getLeastEngagedPercentMissedVotes() {
 
 function getMostEngagedName() {
 
-    var highestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var highestTenPercent = [],  
+        listOfMember = []  
 
 
     for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
@@ -439,8 +437,8 @@ function getMostEngagedMissedVotes() {
 
 
 
-    var highestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var highestTenPercent = [],  
+        listOfMember = []  
 
 
     for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
@@ -459,15 +457,15 @@ function getMostEngagedMissedVotes() {
         return b - a
     });
 
-    //      console.log(highestTenPercent)
+
     return highestTenPercent;
 
 }
 
 function getMostEngagedPercentMissedVotes() {
 
-    var highestTenPercent = [], //array with targeted value 
-        listOfMember = [] //all member, sorted negatively by % of loyalty
+    var highestTenPercent = [],  
+        listOfMember = []  
 
 
     for (i = 0; i < memberList.length; i++) { //looping through list and dispatching each member to an array
@@ -564,7 +562,7 @@ function populateSecondTableAttendance(statistic) {
 
 
     var leastReliable = statistic["10%whovoteleastoftenName"],
-        tbody = document.getElementById("second_table"); // DO NOT ADD THE ID IN A THEAD, use a TBODY instead
+        tbody = document.getElementById("second_table");
 
     tbody.innerHTML = ""; // to erase everything previously done (delte all tr & td added in HTML)
     for (i = 0;
@@ -584,9 +582,9 @@ function populateSecondTableAttendance(statistic) {
 function populateThirdTableAttendance(statistic) {
 
     var leastReliable = statistic["10%whovoteleastoftenName"],
-        tbody = document.getElementById("third_table"); // DO NOT ADD THE ID IN A THEAD, use a TBODY instead
+        tbody = document.getElementById("third_table"); 
 
-    tbody.innerHTML = ""; // to erase everything previously done (delte all tr & td added in HTML)
+    tbody.innerHTML = ""; 
     for (i = 0;
         (i < leastReliable.length); i++) {
         var newRow = document.createElement("tr");
@@ -604,9 +602,9 @@ function populateThirdTableAttendance(statistic) {
 function populateSecondTableLoyalty(statistic) {
 
     var leastReliable = statistic["10%whovoteleastoftenwiththeirpartyName"],
-        tbody = document.getElementById("second_table_loyalty"); // DO NOT ADD THE ID IN A THEAD, use a TBODY instead
+        tbody = document.getElementById("second_table_loyalty"); 
 
-    tbody.innerHTML = ""; // to erase everything previously done (delte all tr & td added in HTML)
+    tbody.innerHTML = ""; 
     for (i = 0;
         (i < leastReliable.length); i++) {
         var newRow = document.createElement("tr");
@@ -623,9 +621,9 @@ function populateSecondTableLoyalty(statistic) {
 function populateThirdTableLoyatly(statistic) {
 
     var leastReliable = statistic["10%whovotemostoftenwiththeirpartyName"],
-        tbody = document.getElementById("third_table_loyalty"); // DO NOT ADD THE ID IN A THEAD, use a TBODY instead
+        tbody = document.getElementById("third_table_loyalty"); 
 
-    tbody.innerHTML = ""; // to erase everything previously done (delte all tr & td added in HTML)
+    tbody.innerHTML = ""; 
     for (i = 0;
         (i < leastReliable.length); i++) {
         var newRow = document.createElement("tr");

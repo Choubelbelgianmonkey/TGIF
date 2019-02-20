@@ -6,7 +6,7 @@ var data,
 var body = document.querySelector("#loader");
 
 
-if (location.pathname == "/senate-data.html" || location.pathname == "/Senate%20Attendance%20statistics.html" || location.pathname == "/Senate%20Partyl%20Loyalty.html") {
+if (location.pathname == "/senate_data.html" || location.pathname == "/Senate_Attendance_statistics.html" || location.pathname == "/Senate_Partyl_Loyalty.html") {
     start("https://api.propublica.org/congress/v1/113/senate/members.json");
 } else {
     start("https://api.propublica.org/congress/v1/113/house/members.json");

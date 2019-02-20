@@ -35,24 +35,24 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="index.html">Congress 113
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="senate-data.html">Senate</a></li>
-                            <li><a href="house-data.html">House</a></li>
+                            <li><a href="senate_data.html">Senate</a></li>
+                            <li><a href="house_data.html">House</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Attendance
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="Senate%20Attendance%20statistics.html">Senate</a></li>
-                            <li><a href="#">House</a></li>
+                            <li><a href="Senate_Attendance_statistics.html">Senate</a></li>
+                            <li><a href="House_Attendance_statistics.html">House</a></li>
                         </ul>
                     </li>
                                         <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="Senate%20Partyl%20Loyalty.html">Senate</a></li>
-                            <li><a href="House%20Partyl%20Loyalty.html">House</a></li>
+                            <li><a href="Senate_Partyl_Loyalty.html">Senate</a></li>
+                            <li><a href="#">House</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -67,18 +67,16 @@
     
 <!--    content beging here-->
     
-    
         <div class="content" id="loader">
         <div class="first_line">
             <div class="text_top_left">
-                <h2>Attendance</h2>
-                <p>The Constitution specif5ies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
-                <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+                <h2>Party Loyalty</h2>
+                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda.</p>
             </div>
             
             
                       <!--  ajaxloader-->
-  <div id="modal2"> <div> </div></div>
+  <div id="modal2"></div>
             
             <div class="top_right_table">
                 <h2>House at a glance</h2>
@@ -101,7 +99,7 @@
 
         <div class="first_line">
             <div>
-                <h2>Least Engaged (Bottom 10% Attendance)</h2>
+                <h2>Least Loyal (Bottom 10% Attendance)</h2>
                 <table class=table-bordered>
                     <thead>
                         <tr>
@@ -110,7 +108,7 @@
                             <th>% Missed</th>
                         </tr>
                     </thead>
-                    <tbody id="second_table">
+                    <tbody id="second_table_loyalty">
                         <tr>
                             <td>--</td>
                             <td>--</td>
@@ -147,7 +145,7 @@
 
             </div>
             <div>
-                <h2>Most Engaged (Top 10% Attendance)</h2>
+                <h2>Most Loyal (Top 10% Attendance)</h2>
 
 
                 <table class=table-bordered>
@@ -158,7 +156,7 @@
                             <th>% Missed</th>
                         </tr>
                     </thead>
-                    <tbody id="third_table">
+                    <tbody id="third_table_loyalty">
                         <tr>
                             <td>--</td>
                             <td>--</td>
@@ -204,6 +202,7 @@
         </div>
 
     </div>
+    
     
     
     
@@ -237,7 +236,7 @@
 
 
  
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+       <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

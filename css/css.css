@@ -1,4 +1,3 @@
-
 .flexNav {
     display: inline-block;
 }
@@ -35,7 +34,8 @@ body {
 }
 
 .content {
-    margin-left: 2vw;
+    margin-left: 3vw;
+    margin-right: 2vw;
 }
 
 p {
@@ -58,7 +58,7 @@ p {
 
 .content_img {
     display: flex;
-    flex-flow: row-reverse;
+    flex-flow: row;
 }
 
 .fuckingfilters {
@@ -118,12 +118,8 @@ p {
                 50% 50% 
         no-repeat;}
 
-
 /* When the body has the loading class, we turn
    the scrollbar off with overflow:hidden */
-
-
-
 
 #loader.loading #modal2 {
     overflow: hidden;   
@@ -137,13 +133,27 @@ p {
 
 /*ajax loader finish here*/
 
-
 /*message in case of not result with the filters*/
-
 
 .notification{
     width: 70%;
     margin: auto;
     margin-top: 40px;
     text-align: center;
+}
+
+.top_page {
+    margin-left: 3vw;
+}
+
+/*added text in case of the search show no result*/
+
+.beautifulText{
+      color: rgba(61, 164, 183, 0.82);
+     text-align: center;
+       font-size: 200%;
+}
+
+#freaking_footer {
+    margin-bottom: auto;
 }

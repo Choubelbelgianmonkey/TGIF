@@ -63,6 +63,8 @@ p {
 
 .fuckingfilters {
     display: flex;
+    justify-content: space-around;
+    
 }
 
 .first_line {
@@ -156,4 +158,13 @@ p {
 
 #freaking_footer {
     margin-bottom: auto;
+}
+
+
+
+
+
+#checkboxex_positions {
+    justify-content: space-between;
+    flex-flow: 1;
 }

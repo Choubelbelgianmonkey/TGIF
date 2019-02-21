@@ -9,40 +9,40 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
 
-   
+
     <!--  CSS local file -->
     <link rel="stylesheet" href="./css/css.css">
-    
+
 
 </head>
 
 <body>
 
-<div class="top_page">
-    <div class="above_nav">
-        <img src="images/headerimgleft.jpg" alt="header_img_left">
-        <h1 class="main_title">Transparent Government in Fact</h1>
-        <div class="align_right">
-            <a href=""><img src="images/headerimgright.jpg" alt="header_img_right" class="header_img_right">info@tgif.net</a>
-        </div>
-    </div>
-
-    <nav class="navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">TGIF</a>
+    <div class="top_page">
+        <div class="above_nav">
+            <img src="images/headerimgleft.jpg" alt="header_img_left">
+            <h1 class="main_title">Transparent Government in Fact</h1>
+            <div class="align_right">
+                <a href=""><img src="images/headerimgright.jpg" alt="header_img_right" class="header_img_right">info@tgif.net</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Senate</a></li>
-                        <li><a href="house_data.html">House</a></li>
-                    </ul>
-                </li>
-                                    <li class="dropdown">
+        </div>
+
+        <nav class="navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">TGIF</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Senate</a></li>
+                            <li><a href="house_data.html">House</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Attendance
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -50,7 +50,7 @@
                             <li><a href="House_Attendance_statistics.html">House</a></li>
                         </ul>
                     </li>
-                                                            <li class="dropdown">
+                    <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -58,86 +58,100 @@
                             <li><a href="House_Partyl_Loyalty.html">House</a></li>
                         </ul>
                     </li>
-            </ul>
-        </div>
-    </nav>
-</div>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
-<div class="container" id="app">   </div> 
+    <div class="container" id="app"> </div>
 
-<div class="content" id="loader">
-     
-    <h2>Senators</h2>
-    <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>    
-    
-<div class="fuckingfilters">
-   
-   
-             <!--  ajaxloader-->
-  <div id="modal"><img src="images/ajax-loader.gif"  id="img_modal" alt="123">  </div>
-   
-    <div id="my_checkboxes">
-    </div>
-    
-    <div id="dropDownState">
-        
-        <select id="drop_down_state" name="stateSelect">
-        <option value=""  selected>Select your State</option>
-        </select>
-        
-    </div>
-    </div>
-    
-    
-    <table class="table" id="my_table">
-                <thead>
-                    <tr class="allRow">
-                        <th>Name</th>
-                        <th class="classParty">Party</th>
-                        <th class="classState">State</th>
-                        <th>Year in office</th>
-                        <th>% vote w/ party</th>
-                    </tr>
-                </thead>
-                <tbody id="table">
+    <div class="content" id="loader">
+
+        <h2>Senators</h2>
+        <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+
+        <div class="fuckingfilters">
             
-             
-                </tbody>
-     </table>
+            
 
+            <!--  ajaxloader-->
+            
+            <div id="modal"><img src="images/ajax-loader.gif" id="img_modal" alt="123"> </div>
+
+
+<div id="checkboxex_positions">
+           
+            <div id="my_checkboxes">
+            </div>
+            
 </div>
+            <div id="dropDownState">
 
- <!-- footer begin here -->
- 
- <div class="navbar-default"> 
-  
-   <!-- Footer -->
-   
-<footer>
+                <select id="drop_down_state" name="stateSelect">
+                    <option value="" selected>Select your State</option>
+                </select>
 
-  <!-- Copyright -->
-  
-  <div class="footer-copyright text-center py-3">© 2019 TGIF| all right reserved
-  </div>
-  
-  <!-- Copyright -->
+            </div>
+            
+            <div>
+                
+                <input type="text" name="search"  id="search">
+                <button onclick="doubleFilters()">Search</button>
+                
+            </div>
+            
+        </div>
 
-</footer>
 
-<!-- Footer -->
+        <table class="table" id="my_table">
+            <thead>
+                <tr class="allRow">
+                    <th>Name</th>
+                    <th class="classParty">Party</th>
+                    <th class="classState">State</th>
+                    <th>Year in office</th>
+                    <th>% vote w/ party</th>
+                </tr>
+            </thead>
+            <tbody id="table">
 
- </div>
-  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>  
-<!--senate data is below-->
-<!--<script src="./javaScript/pro-congress-113-senate.js"></script> -->
-<!--  adding vue framework-->
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="./javaScript/main.js"></script>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- footer begin here -->
+
+    <div class="navbar-default">
+
+        <!-- Footer -->
+
+        <footer>
+
+            <!-- Copyright -->
+
+            <div class="footer-copyright text-center py-3">© 2019 TGIF| all right reserved
+            </div>
+
+            <!-- Copyright -->
+
+        </footer>
+
+        <!-- Footer -->
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <!--senate data is below-->
+    <!--<script src="./javaScript/pro-congress-113-senate.js"></script> -->
+    <!--  adding vue framework-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="./javaScript/main.js"></script>
 </body>
 
 </html>

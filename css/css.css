@@ -64,6 +64,7 @@ p {
 .fuckingfilters {
     display: flex;
     justify-content: space-around;
+    border-style: double;
     
 }
 
@@ -167,4 +168,8 @@ p {
 #checkboxex_positions {
     justify-content: space-between;
     flex-flow: 1;
+}
+
+#my_checkboxes {
+    flex: 2;
 }

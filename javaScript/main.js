@@ -413,28 +413,11 @@ function doubleFilters() {
         }
     }     
            
-    
-    
-    
-//        console.log(allRow[i].innerHTML
-//        
-//      var txt = select.options[i].text;
-//       if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
-//           select.options[i].style.display = 'none';
-//       } else {
-//           select.options[i].style.display = 'list-item';
-//       }
-//   
-    
-
     if(manualSearch !== ""){
     populateTable(laststand2)
-
 }
     else {populateTable(laststand)}
-    
-    
-    
+  
 }
 
 
@@ -872,7 +855,6 @@ function populateFirstTable(statistic) {
     cell12.innerHTML = statistic.averageVoteWparty;
 }
 
-
 function populateSecondTableAttendance(statistic) {
 
 
@@ -894,7 +876,6 @@ function populateSecondTableAttendance(statistic) {
 
 }
 
-
 function populateThirdTableAttendance(statistic) {
 
     var leastReliable = statistic["10%whovoteleastoftenName"],
@@ -914,7 +895,6 @@ function populateThirdTableAttendance(statistic) {
 
 }
 
-
 function populateSecondTableLoyalty(statistic) {
 
     var leastReliable = statistic["10%whovoteleastoftenwiththeirpartyName"],
@@ -932,7 +912,6 @@ function populateSecondTableLoyalty(statistic) {
         tbody.appendChild(newRow);
     }
 }
-
 
 function populateThirdTableLoyatly(statistic) {
 

@@ -133,7 +133,7 @@ function start(url) { //here begin the function calling for the json
         
         var searchBar = document.getElementById("search");
         
- document.getElementById("search").addEventListener('keyup', doubleFilters());
+ document.getElementById("search").addEventListener('keyup', doubleFilters);
              
        
         

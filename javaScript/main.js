@@ -2,6 +2,7 @@ var data;
 var memberList;
 var body = document.querySelector("#loader");
 
+
 if (location.pathname.includes("senate")) {
     start("https://api.propublica.org/congress/v1/113/senate/members.json");
 } else {
@@ -30,6 +31,8 @@ function start(url) { //here begin the function calling for the json
             // as main VAR is here, we can and we HAVE to call all the relevant function here (VAR dont cross {})
 
             memberList = json.results[0].members;
+        
+       
         
         if (document.getElementById("table")){
             populateTable(memberList)};
@@ -106,6 +109,8 @@ function start(url) { //here begin the function calling for the json
                     }],
                 }
             });
+        
+        
 
 
             if (document.getElementById("not_vue")) {
@@ -125,12 +130,20 @@ function start(url) { //here begin the function calling for the json
             if (document.getElementById("third_table_loyalty")) { 
                 populateThirdTableLoyatly(statistic) 
             }
-            body.classList.remove("loading"); // remove the ajax loader  
+        
+        var searchBar = document.getElementById("search");
+ document.getElementById("search").addEventListener('keyup', doubleFilters());
+             
+       
+        
+        body.classList.remove("loading"); // remove the ajax loader 
         })
         .catch(function (error) {
             console.log(error);
         })
 }
+
+
 
 //step 1 and last step: table content begin here, and filter end here as well, this is a dynamical filter!
 
@@ -423,6 +436,8 @@ function doubleFilters() {
     
     
 }
+
+
 
 
 //STATISTICS COMPUTING BEGIN HERE
@@ -936,3 +951,4 @@ function populateThirdTableLoyatly(statistic) {
         tbody.appendChild(newRow);
     }
 }
+

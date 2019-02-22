@@ -63,9 +63,7 @@ p {
 
 .fuckingfilters {
     display: flex;
-    justify-content: space-around;
-    border-style: double;
-    
+    justify-content: space-around;    
 }
 
 .first_line {

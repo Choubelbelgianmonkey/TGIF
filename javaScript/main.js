@@ -132,12 +132,14 @@ function start(url) { //here begin the function calling for the json
             }
         
         var searchBar = document.getElementById("search");
+        
  document.getElementById("search").addEventListener('keyup', doubleFilters());
              
        
         
         body.classList.remove("loading"); // remove the ajax loader 
         })
+    
         .catch(function (error) {
             console.log(error);
         })
